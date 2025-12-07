@@ -5,7 +5,7 @@ import SplashScreen from "./pages/SplashScreen";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
-import Profile from "./pages/profile";  
+import Profile from "./pages/Profile";  
 import Settings from "./pages/Settings";  
 import FindMatches from "./pages/FindMatches";
 import FindUsers from "./pages/FindUsers";

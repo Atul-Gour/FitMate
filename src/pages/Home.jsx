@@ -1,7 +1,7 @@
 // Home.jsx
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Profile from "./profile";
+import Profile from "./Profile";
 import PostMatch from "./PostMatches";
 import FindUsers from "./FindUsers";
 import {
