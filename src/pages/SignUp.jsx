@@ -417,7 +417,6 @@ export default function SignUp() {
           </form>
         </div>
 
-        {/* Right - Image */}
         <div className="w-1/2 h-full flex items-center justify-center">
           <img
             src={Logo}

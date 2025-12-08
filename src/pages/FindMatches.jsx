@@ -69,6 +69,11 @@ const FindMatches = () => {
     setMatches(filtered);
   };
 
+  const getMatchImage = (sport) => {
+    if (!sport) return `${API}/matchuploads/default-match.jpg`;
+    return `${API}/matchuploads/${sport.toLowerCase()}.jpg`;
+  };
+
   const handleJoinMatch = async (match) => {
     try {
       const res = await fetch(`${API}/api/match/join`, {
@@ -191,11 +196,7 @@ const FindMatches = () => {
             {/* Thumbnail */}
             <div className="w-36 h-36 flex items-center justify-center bg-gray-200 rounded-md shadow-md text-gray-600">
               <img
-                src={
-                  m.sportsType && m.sportsType.trim() !== ""
-                    ? `${API}/matchuploads/${m.sportsType}.jpg`
-                    : `${API}/matchuploads/default-match.jpg`
-                }
+                src={getMatchImage(m.sportsType)}
                 alt={m.sportsType|| "Match"}
                 className="w-full h-full object-cover rounded-xl"
               />
@@ -255,11 +256,7 @@ const FindMatches = () => {
             <div className="flex gap-6 mb-6">
               <div className="w-36 h-36 flex items-center justify-center bg-gray-200 rounded-md shadow-md text-gray-600">
               <img
-                src={
-                  selectedMatch.sportsType && selectedMatch.sportsType.trim() !== ""
-                    ? `${API}/matchuploads/${selectedMatch.sportsType}.jpg`
-                    : `${API}/matchuploads/default-match.jpg`
-                }
+                src={getMatchImage(selectedMatch.sportsType)}
                 alt={selectedMatch.sportsType|| "Match"}
                 className="w-full h-full object-cover rounded-xl"
               />
@@ -297,7 +294,7 @@ const FindMatches = () => {
                     {selectedMatch.address.state}
                   </span>
                   <a
-                    href={selectedMatch.address.coordinates.mapLink}
+                    href={selectedMatch.address?.coordinates?.mapLink || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-600 hover:underline flex items-center gap-1"

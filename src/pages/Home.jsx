@@ -246,11 +246,7 @@ export default function Home() {
           <div className="flex items-center justify-between px-4 py-4">
             {/* Sidebar User Card */}
             <img
-                src={
-                  user?.profileImage
-                    ? `${API}/uploads/${user.profileImage}`
-                    : `${API}/uploads/default.jpg`
-                }
+              src={user?.profileImage || "/default.jpg"}
               alt="User"
               className="w-12 h-12 rounded-full object-cover"
             />
@@ -320,15 +316,11 @@ export default function Home() {
 
         <div className="px-4 py-4">
           <div className="flex items-center gap-3">
-            <img
-              src={
-                user?.profileImage
-                  ? `${API}/uploads/${user.profileImage}`
-                  : `${API}/uploads/default.jpg`
-              }
-              alt={user?.name || "User"}
-              className="w-12 h-12 rounded-full object-cover"
-            />
+           <img
+            src={user?.profileImage || "/default.jpg"}
+            alt={user?.name || "User"}
+            className="w-12 h-12 rounded-full object-cover"
+          />
 
 
             {isOpen && (
@@ -472,11 +464,7 @@ export default function Home() {
                         {(leaderboardData ?? []).map((lbUser, idx) => (
                           <li key={idx} className="flex items-center gap-3">
                             <img
-                              src={
-                                lbUser.profileImage
-                                  ? `${API}/uploads/${lbUser.profileImage}`
-                                  : `${API}/uploads/default.jpg`
-                              }
+                              src={lbUser?.profileImage || "/default.jpg"}
                               alt={lbUser.username}
                               className="w-8 h-8 rounded-full object-cover"
                             />
@@ -763,11 +751,7 @@ export default function Home() {
                   <div className="bg-white rounded-xl p-6 shadow-sm">
                     <div className="flex flex-col items-center">
                       <img
-                        src={
-                          user?.profileImage
-                            ? `${API}/uploads/${user.profileImage}`
-                            : `${API}/uploads/default.jpg`
-                        }
+                        src={user?.profileImage || "/default.jpg"}
                         alt="User"
                         className="w-20 h-20 rounded-full mb-3 object-cover"
                       />

@@ -27,7 +27,7 @@ const FindUsers = ({ isOpen, onClose }) => {
     if (searchTerm.trim()) {
       setRecentSearches([searchTerm, ...recentSearches.slice(0, 4)]);
       const res = await fetch(
-        `${API}/auth/find-users?search=${searchTerm}`
+        `${API}/api/find-users?search=${searchTerm}`
       );
       const data = await res.json();
       setUsers(data);
@@ -111,7 +111,7 @@ const FindUsers = ({ isOpen, onClose }) => {
               >
                 <div className="w-16 h-16 flex-shrink-0 overflow-hidden rounded-full border">
                   <img
-                    src={u.img}
+                    src={u?.profileImage || "/default.jpg"}
                     alt={u.name}
                     className="w-full h-full object-cover"
                   />
