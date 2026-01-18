@@ -1,4 +1,3 @@
-// App.jsx
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import SplashScreen from "./pages/SplashScreen";
@@ -15,7 +14,6 @@ import PostMatches from "./pages/PostMatches";
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
 
-  // Automatically hide splash screen after 2-3 seconds 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 2000); 
     return () => clearTimeout(timer);

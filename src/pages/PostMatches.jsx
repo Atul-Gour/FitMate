@@ -27,16 +27,50 @@ export default function PostMatch({ onClose }) {
   const [weatherInfo, setWeatherInfo] = useState(null);
 
 
-
 useEffect(() => {
   const { groundName, city, state, matchDate, matchTime } = formData;
-  if (groundName && city && state && matchDate && matchTime) {
-    setWeatherInfo("ClearWeather on that day"); // hardcoded
-  } else {
-    setWeatherInfo(null); // clear if any field missing
-  }
-}, [formData.groundName, formData.city, formData.state, formData.matchDate, formData.matchTime]);
 
+  if (!(groundName && city && state && matchDate && matchTime)) {
+    setWeatherInfo(null);
+    return;
+  }
+
+  const controller = new AbortController();
+
+  const fetchWeatherPreview = async () => {
+    try {
+      const res = await fetch(`${API}/api/match/weather-preview`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ city, state, matchDate, matchTime }),
+        signal: controller.signal,
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text);
+      }
+
+      const data = await res.json();
+      setWeatherInfo(data.weather);
+    } catch (err) {
+      if (err.name !== "AbortError") {
+        console.error("Weather preview error:", err);
+        setWeatherInfo(null);
+      }
+    }
+  };
+
+  fetchWeatherPreview();
+
+  return () => controller.abort();
+}, [
+  formData.groundName,
+  formData.city,
+  formData.state,
+  formData.matchDate,
+  formData.matchTime,
+]);
 
 
   const handleChange = (e) => {
