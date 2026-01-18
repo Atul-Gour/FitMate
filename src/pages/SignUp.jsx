@@ -142,10 +142,10 @@ export default function SignUp() {
         {/* Left - Form */}
         <div className="w-1/2 flex flex-col items-center justify-center p-12">
           <h2 className="text-3xl font-extrabold mb-2 text-[#001A2A] tracking-wide drop-shadow-sm">
-            {step === 1 ? "Join Us!" : "Additional Details"}
+            {step === 1 ? "Welcome to Fitmate" : "Additional Details"}
           </h2>
-          <p className="text-[#001A2A] mb-8 text-base font-medium italic">
-            {step === 1 ? "Create New Account" : "Tell us more about yourself"}
+          <p className="text-[#001A2A] mb-8 text-base font-medium ">
+            {step === 1 ? "Join Us!" : "Tell us more about yourself"}
           </p>
 
           <form
