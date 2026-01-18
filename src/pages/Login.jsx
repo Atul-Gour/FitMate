@@ -61,7 +61,7 @@ export default function Login() {
           <h2 className="text-3xl font-extrabold mb-2 text-gray-800 tracking-wide drop-shadow-sm">
             Welcome To Fitmate
           </h2>
-          <p className="text-gray-600 mb-8 text-base font-medium italic">
+          <p className="text-gray-600 mb-8 text-base font-medium ">
             Connect And Play
           </p>
 
