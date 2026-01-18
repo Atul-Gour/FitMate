@@ -136,15 +136,42 @@ export default function SignUp() {
     }
   };
 
+  function PolicyTooltip({ title, content, children }) {
+  return (
+    <span className="relative group text-indigo-600 underline cursor-pointer">
+      {children}
+
+      <span
+        className="absolute bottom-full left-1/2 z-50 mb-3 w-64 -translate-x-1/2
+        rounded-lg bg-[#001A2A] p-3 text-xs text-white shadow-lg
+        opacity-0 group-hover:opacity-100 transition pointer-events-none"
+      >
+        <strong className="block mb-1">{title}</strong>
+        {content}
+
+        <span
+          className="absolute left-1/2 top-full -translate-x-1/2
+          w-0 h-0
+          border-l-[6px] border-r-[6px] border-t-[6px]
+          border-l-transparent border-r-transparent border-t-[#001A2A]"
+        />
+      </span>
+    </span>
+  );
+}
+
+
+
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#001A2A]">
       <div className="flex w-[1200px] h-[700px] bg-white/95 rounded-2xl shadow-2xl ring-1 ring-gray-200 overflow-hidden backdrop-blur-sm">
         {/* Left - Form */}
         <div className="w-1/2 flex flex-col items-center justify-center p-12">
-          <h2 className="text-3xl font-extrabold mb-2 text-[#001A2A] tracking-wide drop-shadow-sm">
+          <h2 className="text-4xl font-extrabold mb-2 text-[#001A2A] tracking-wide drop-shadow-sm">
             {step === 1 ? "Welcome to Fitmate" : "Additional Details"}
           </h2>
-          <p className="text-[#001A2A] mb-8 text-base font-medium ">
+          <p className="text-gray-600 mb-8 text-base font-medium" >
             {step === 1 ? "Join Us!" : "Tell us more about yourself"}
           </p>
 
@@ -201,19 +228,19 @@ export default function SignUp() {
                     onChange={(e) => setAgreed(e.target.checked)}
                     className="mt-1 w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
                   />
-                  <label htmlFor="terms" className="text-[#001A2A] text-sm">
+                  <label className="text-[#001A2A] text-sm leading-relaxed">
                     By signing up, you agree to the{" "}
-                    <span className="text-indigo-600 underline cursor-pointer">
-                      Terms of Services
-                    </span>
+                    <PolicyTooltip title="Terms of Service" content="These terms govern your use of Fitmate, including account responsibilities and acceptable use.">
+                      Terms of Service
+                    </PolicyTooltip>
                     ,{" "}
-                    <span className="text-indigo-600 underline cursor-pointer">
+                    <PolicyTooltip title="Privacy Policy" content="We collect basic account and health-related information to personalize your experience. Your data is never sold.">
                       Privacy Policy
-                    </span>
+                    </PolicyTooltip>
                     , and{" "}
-                    <span className="text-indigo-600 underline cursor-pointer">
+                    <PolicyTooltip title="Cookies Policy" content="We use cookies to maintain sessions, improve performance, and enhance security.">
                       Cookies Policy
-                    </span>
+                    </PolicyTooltip>
                     .
                   </label>
                 </div>

@@ -58,11 +58,11 @@ export default function Login() {
 
         {/* Right - Form */}
         <div className="w-1/2 flex flex-col items-center justify-center p-12">
-          <h2 className="text-3xl font-extrabold mb-2 text-gray-800 tracking-wide drop-shadow-sm">
+          <h2 className="text-4xl font-extrabold mb-2 text-gray-800 tracking-wide drop-shadow-sm">
             Welcome To Fitmate
           </h2>
           <p className="text-gray-600 mb-8 text-base font-medium ">
-            Connect And Play
+            Find Your Next Game
           </p>
 
           <form className="w-full space-y-4" onSubmit={handleLogin}>
